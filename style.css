@@ -1,0 +1,167 @@
+/* Clase 10: grid css */
+
+/* Estilos a las etiquetas (genericos) */
+body, html{
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Selectores de clase */
+/* Aca arrancamos a trabajar con grid */
+.container{
+    /* Dimensiones */
+    max-width: 980px;
+    padding: 0;
+    margin: 0 auto;
+    /* Predisponemos al padre a las grillas */
+    display: grid;
+    /* Cantidad de columnas y dimensiones */
+    grid-template-columns: repeat(6, 1fr);
+    /* Dividimos el espacio de trabajo en 3 filas */
+    grid-template-rows: 10vh 75vh 10vh;
+    /* Introducimos el valor de gap, hace referencia a la separacion entre columnas y filas */
+    gap: 10px; /*v_h v_v; si tiene dos valores entonces el pruimero hace referencia al valores horizontales y el segundo a los verticales*/
+
+}
+
+.main{
+    /* Predisponemos al main a grillas */
+    display: grid;
+    margin: 0 auto; /* Igual no deberia haber espacios entre los costados */
+    padding: 0;
+    /* Division en columnas (del main) */
+    grid-template-columns: repeat(6, fr);
+    /* Plantear una pregunta que la va a responder su padre, cuantas columnas ocupa el padre? */
+    grid-column-start: 1; /* Hace referencia al 1er gap, numero solo hace referencia al gap, NO a la columna  */
+    grid-column-end: 7;   /*En lenguaje de grillas el -1 hace referncia al ultimo, numero solo hace referencia al 7to gap */
+    /* Valor del gap */
+    gap: 10px;
+}
+
+.aside{
+    /* Cuantas columnas del padre va a ocupar */
+    grid-column-start: 1;
+    grid-column-end: 3; /* el numero corresponde al gap que limita la columna*/
+    background-color:cornflowerblue;
+    padding: 10px;
+
+}
+
+
+
+
+/* Estilos del contenido de aside */
+.aside h2{
+    font-size: 1.5rem;
+    /* background-color:rgb(7, 219, 219); */
+}
+.aside ul li a{
+    text-decoration: none;
+    color: rgb(32, 61, 226);
+
+}
+
+.aside ul li a:hover{
+    text-decoration: underline;
+}
+
+.section{
+    /* Cuantas columnas edl padre ocupasection */
+    grid-column-start: 3;
+    grid-column-end: 7;
+    background-color: lightblue;
+    padding: 10px;
+}
+
+/* HEADER FOOTER */
+.nav, .nav ul{
+    /* Predisponemos a los padres a comportamiento de grillas */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    /* Cuantas columnas ocupamos */
+    grid-column-start: 1;
+    grid-column-end: 7;
+    /* Valor de los vacios o gap */
+    gap:10px;
+    /* geometria */
+    padding: 0;
+    margin:0;
+    background-color: #333;
+}
+
+.nav ul li a{
+    color: beige;
+    text-decoration: none;
+}
+
+.nav ul li{
+    list-style: none; /* Le saco las bolitas de la izquierda */
+    /* Predisponemos a li a comportamiento flexible */
+    display:flex;
+    padding: 0;
+    margin: 0;
+    /* Alineamientos */
+    justify-content: center;
+    align-items: center;
+}
+
+/* pseudoselector : nth-child() o al primer hijo fisrt-child*/
+.footer ul li:nth-child(1){
+    grid-column: 2;
+}
+.header ul li:nth-child(1){
+    grid-column: 4;
+}
+
+/* MENU DESPLEGABLE */
+.header ul li .dropdown-content{
+    /* Personalizamos la posicion de dropdown */
+    position: absolute;
+
+    /* Ubicamos la caja drop */
+    top:10vh;
+    right:0;
+
+    /* Disponemos a las cajitas en columnas, ubicamos el contenido de drop en columna*/
+    display: flex;
+    flex-direction: column;
+    /* Predisponemos a todo el blñoque (drop) a una transicion */
+    transition: all 0.5s;
+    opacity: 0; /* 0 para totalmente invisible, 1 totalmente opaco */
+
+    
+}
+
+.header ul{
+    position: relative;
+}
+
+/* Dentro de header dentor de la listas deosrdenadas(ul) li que carga con la clase .dropdown-content */
+.header ul li:hover .dropdown-content{
+    opacity: 1;
+
+}
+
+/* Estilos para el menu desplegable */
+.header ul li .dropdown-content li{
+    padding: 20px 40px;
+    transition: all 0.3s;
+
+}
+.header ul li .dropdown-content li:hover{
+    background-color: #575757;
+}
+
+
+
+
+
+
+
+
+
+
+
+
